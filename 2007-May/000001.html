@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a27 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C46545a38.SUlkBg7x79zuCvxW%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a27 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C46545a38.SUlkBg7x79zuCvxW%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a27 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed May 23 17:14:00 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000002.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>NEW features of cdrtools-2.01.01a27:
+
+All:
+
+-	Added forgotten file RULES/x86-interix-cl.rul to the Schily Makefilesystem
+
+-	Trying to better deal with MS winsock2.h oddities in schily/time.h
+
+-	#undef iswalnum ... in schily//wchar.h before defining non wchar fallbacks.
+
+-	config.guess now knows about i386 Darwin (Mac OS X on Intel)
+
+-	Schily makefilesystem enhanced to check for extended
+	fields in struct utsname as seen e.g. in MS SFU (Interix).
+
+-	New predefined macro OSVERSION in the makefilesystem is needed
+	for SCO OpenServer 6.x support (because this uses a UnixWare
+	kernel
+
+-	Trying to support Compilation on SCO OpenServer 6.x
+
+-	New macro $(CC_OUTPUT_FILTER) allows to filter away the
+	unwanted file name echo from cl.exe.
+
+-	Interix now uses uname -m instead of uname -p for $(OARCH)
+
+-	Makefile support for pentium-4-unixware-cc.rul and
+	pentium-4-unixware-gcc.rul was added.
+
+-	New autoconf test for libiconv
+
+-	The Schily makefilesystem now by default searches in /usr/local/include
+	and /usr/local/lib if on FreeBSD. This is needed in order to find
+	libintl and libiconv.
+
+-	make html and make htmlx now works even on the top level directory
+	and creates html versions of the man pages
+
+-	fixed a typo in the autoconf test for C99 isinf/isnan
+
+Libschily:
+
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libfind:
+
+-	find_list.c now #ifdefs names like S_IFLNK
+
+Libfile:
+
+-	Better portability for strerror() in file.h
+
+Libhfs_iso:
+
+Libscg:
+
+-	Better help message for Mac OS X wich dev=help
+
+Rscsi:
+
+Cdrecord:
+
+-	Cdrecord now correctly reports Copyright ...2007 with -version
+
+-	Let cdrecord check the available transfer size for more SCSI 
+	commands. 
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Let cdda2wav print the -version outout to stdout and in a similar form
+	as other cdrtools programs.
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+-	Make btcflash compile on K&amp;R compilers (like on HP-UX)
+
+Mkisofs (By J&#246;rg Schilling and James Pearson <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">j.pearson at ge.ucl.ac.uk</A>):
+
+-	mkisofs -J no longer implies -l as done incorrectly after
+	converting from GNU getopt_long() to getargs()
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000002.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

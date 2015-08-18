@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a60 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a60%20ready&In-Reply-To=%3C4a15759f.9eeAEpOszgLds203%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a60 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a60%20ready&In-Reply-To=%3C4a15759f.9eeAEpOszgLds203%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a60 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu May 21 17:39:11 CEST 2009</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha/">ftp://ftp.berlios.de/pub/cdrecord/alpha/</A>
+
+NEW features of cdrtools-2.01.01a60: 
+ 
+******* 
+NOTE: cdrtools is currently in a state just before a new major release. 
+         
+ 
+******* 
+ 
+ 
+All: 
+ 
+-       Trying to work around nasty Linux distributions that try to fool autoconf 
+        function tests and thus may result in incorrect results for the functions 
+        fexecl fexecle fexecv fexecve fspawnv fspawnl fspawnv_nowait getline fgetline 
+ 
+-       New include files include/schily/dlfcn.h and include/schily/shcall.h 
+ 
+-       New autoconf tests for dlopen() and similar functions 
+ 
+-       Fixed a typo in include/schily/fnmatch.h that prevented compilation on BeOS 
+ 
+-       Fixed a typo in include/schily/libport.h that prevented compilation on BeOS 
+ 
+-       New makefile &quot;Mocsw&quot; allows to create packages for &quot;opencsw&quot; 
+ 
+-       RULES/rules.csw enhanced to allow to overwrite EMAIL= and HOTLINE= from 
+        the make command line. 
+ 
+-       New autoconf test for getprogname()/setprogname() 
+ 
+-       Support for using Microsoft &quot;cl&quot; to compile 64 bit binaries from Cygwin now 
+        has been finished 
+ 
+Libschily: 
+ 
+-       Code in libschily/fexec.c cleaned up for better readability 
+ 
+ 
+-       libschily/checkerr.c now correctly handles the &quot;WARN&quot; directive. 
+ 
+ 
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>): 
+ 
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>): 
+ 
+Libcdrdeflt: 
+ 
+Libdeflt: 
+ 
+Libfind: 
+ 
+Libfile: 
+ 
+Libhfs_iso: 
+ 
+Libsiconv: 
+ 
+Libscg: 
+ 
+Libscgcmd: 
+ 
+Rscsi: 
+ 
+Cdrecord: 
+ 
+-       Cdrecord now calls read_format_capacities() in silent mode in order to 
+        check whether the current drive supports this SCSI command. 
+ 
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>): 
+ 
+-       cdda2wav now gives better readable text with cdda2wav -help 
+ 
+-       BeOS has a /boot/develop/headers/be/support/ByteOrder.h that also defines 
+        _BYTEORDER_H and thus interferes with our cdda2wav/byteorder.h 
+ 
+Readcd: 
+ 
+Scgcheck: 
+ 
+Scgskeleton: 
+ 
+Btcflash: 
+ 
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale): 
+ 
+-       libschily/checkerr.c (used by mkisofs) now correctly handles the &quot;WARN&quot; directive. 
+ 
+ 
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

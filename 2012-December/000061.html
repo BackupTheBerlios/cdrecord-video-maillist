@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] Cdrtools-3.01a09 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-3.01a09%20ready&In-Reply-To=%3C50bc865b.ICddOmzyNcF/%2Btv%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] Cdrtools-3.01a09 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-3.01a09%20ready&In-Reply-To=%3C50bc865b.ICddOmzyNcF/%2Btv%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] Cdrtools-3.01a09 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Dec  3 12:00:43 CET 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+last week, a bug in mkisofs was reported...
+
+
+NEW features of cdrtools-3.01a09:
+
+This is the first localization step for cdrtools. All programs now (hopefully)
+call gettext() for all strings that need localization.
+
+-	The next step will include dgettext() calls for the libraries.
+
+-	The following step will include the extracted strings
+
+-	The last step will include German translations and install support
+	for the resulting binary message object files.
+
+----------&gt; Please test and report compilation problems! &lt;---------
+
+***** NOTE: As mentioned since 2004, frontends to cdrtools should *****
+*****		call all programs from cdrtools in the &quot;C&quot; locale *****
+*****		by e.g. calling: LC_ALL=C cdrecord ....		  *****
+*****		unless these frontends support localized strings  *****
+*****		used by the cdrtools with NLS support.		  *****
+
+This version compiles on Win-DOS using the Microsoft compiler cl.exe but
+warning: due to missing POSIX compliance with basic features (e.g. stat()
+does not return inode numbers), there are many problems with the resulting
+code and thus it is recommended to better use a POSIX layer on top of 
+WIN-DOS.
+
+All:
+
+-	Better support for Win32 sockets when using cl.exe
+
+-	Avoid problems with the non-standard prototypes for link() unlink()
+	read() and write() from cl.exe
+
+-	Support for Pyro (a Syllable clone) was added.
+	Thanks to Flemming H. S&#248;rensen
+
+Libschily:
+
+-	Avoid warnings from cl.exe for libschily/gettimeofday.c
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Some cstyle changes
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libmdigest:
+
+-	Some cstyle changes
+
+Libsiconv:
+
+Libscg:
+
+-	Some cstyle changes
+
+Libscgcmd:
+
+Libmdigest:
+
+-	CSTYLED comment added
+
+Rscsi:
+
+Cdrecord:
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Better handling of CLONE AREAs on newer Haiku versions.
+
+-	Some cstyle changes
+
+Readcd:
+
+Scgcheck:
+
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	Avoid to access illegal memory from dvd_file.c::uniq()
+
+-	Avoid a 32 bit integer overflow while computing sector addresses for
+	Rock Ridge CE entries.
+
+-	A compile bug with QNX was corrected
+
+-	A new option -ignore-error alows to continue on some errors.
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+
+CYGWIN NT-4.0 NOTES:
+
+To compile on Cygwin32, get Cygwin and install it.
+For more information read README.win32
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

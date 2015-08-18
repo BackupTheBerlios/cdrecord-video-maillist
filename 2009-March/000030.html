@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a58 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a58%20ready&In-Reply-To=%3C49b54ae4.DWpK8oZ4qwoIal9h%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a58 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a58%20ready&In-Reply-To=%3C49b54ae4.DWpK8oZ4qwoIal9h%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a58 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Mar  9 17:59:16 CET 2009</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>NEW features of cdrtools-2.01.01a58:
+
+*******
+NOTE: cdrtools is currently in a state just before a new major release.
+	
+
+*******
+
+
+All:
+
+-	New Make rules for Syllable. Syllable is a fork from AtheOS.
+
+-	New make rules for Haiku
+
+-	New include file schily/sysexits.h is needed for Haiku
+
+-	New autoconf test for sysexits.h
+
+-	Autoconf tests for os2.h and os2me.h moved from cdda2wav to
+	global
+
+-	config.guess and config.sub now have support for Haiku
+
+-	New rule support for linux on &quot;sh3&quot;, &quot;sh4&quot; and &quot;sh4a&quot; platforms.
+
+-	autoconf now acts more reliable and more orthogonal with  AC_CHECK_TYPE() vs. 
+	AC_CHECK_SIZEOF() and carefully includes include files separately based on
+	fine grained tests.
+
+-	Changed schily/dirent.h to correctly set up NAME_MAX on ATARI MiNT
+
+-	Changed schily/maxpath.h to correctly set up NAME_MAX on ATARI MiNT
+
+Libschily:
+
+-	fexec now correctly works on Haiku and BeOS
+
+-	libschily/format.c now supports the %z (size_t) and %t (ptrdiff_t) 
+	printf format size modifiers (fixed a typo introdiced in the first attempt)
+
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+Libscg:
+
+-	A first version of the SCSI adaptation layer for Syllable has been added.
+	Thanks to Kristian Van Der Vliet &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">vanders at liqwyd.com</A>&gt; for the first 
+	implementation.
+
+-	Haiku is a BeOS clone and thus uses scsi-beos.c as SCSI adaptation layer.
+
+	IMPORTANT NOTICE: if you like to compile libscg with a current Haiku release
+	you first need to copy a file:
+
+	cd /boot/develop/headers/os
+	cp device/CAM.h drivers/CAM.h
+
+	CAM.h was at /boot/develop/headers/os/drivers/CAM.h in BeOS and as CAM
+	has no own hardware, it seems to belong into /boot/develop/headers/os/drivers/
+
+
+Libscgcmd:
+
+Rscsi:
+
+Cdrecord:
+
+-	Fixed a minor typo in cdrecord
+
+-	Some better warnings with cdrecord in case that the environment variables
+	'CDR_FORCERAWSPEED=' or 'CDR_FORCSPEED=' have been specified.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Cdda2wav now uses an autoconf test to decide whether BEOS clone areas 
+	can be used. THis gives Haiku compatibility.
+
+-	Fixed a bug introduced with introducing support for MD5 Sums.
+	Cdda2wav now disables the MD5 sum output in case -no-infofile has been specified
+
+-	Autoconf tests for os2.h and os2me.h moved from cdda2wav to
+	global
+
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	Mkisofs now reports &quot;Haiku&quot; for the OS platform if on Haiku.
+
+-	The isoinfo man page now includes the -debug option
+
+-	Automated support for System ID
+
+	Haiku, Syllable, AMIGA-OS, ATARI-MiNT
+
+-	Fixed some Rock Ridge bugs that have been identified when investigating
+	in the OpenSolaris bug 6807009
+	<A HREF="http://defect.opensolaris.org/bz/show_bug.cgi?id=5385">http://defect.opensolaris.org/bz/show_bug.cgi?id=5385</A>
+
+-	Man page description for -abstract -biblio -copyright is now better
+	to understand
+
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+
+CYGWIN NT-4.0 NOTES:
+
+To compile on Cygwin32, get Cygwin and install it.
+For more information read README.win32
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

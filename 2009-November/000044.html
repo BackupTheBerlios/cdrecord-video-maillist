@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a68 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a68%20ready&In-Reply-To=%3C4b0564f2.5yG2PhynkEb67KPA%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000043.html">
+   <LINK REL="Next"  HREF="000045.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a68 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a68%20ready&In-Reply-To=%3C4b0564f2.5yG2PhynkEb67KPA%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a68 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Nov 19 16:32:02 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000043.html">[Cdrecord-video] cdrtools-2.01.01a67 ready
+</A></li>
+        <LI>Next message: <A HREF="000045.html">[Cdrecord-video] cdrtools-2.01.01a69 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>NEW features of cdrtools-2.01.01a68:
+
+*******
+NOTE: cdrtools is currently in a state of a release candidate for the next
+major release.
+	
+
+*******
+
+
+All:
+
+-	VMS rules for libraries not create an archive XXX.olb instead of libXXX.a
+
+-	schily/utypes.h enhanced to allow to define maxint_t which is 
+	missing on VMS
+
+-	Better autoconf test for union wait vs. int for platforms that
+	define union wait but use int as wait() parameter.
+
+-	schily/vfork.h now includes unistd.h as the related definitions 
+	are there on Solaris
+
+-	Fixed a configure bug with opendir() inherited from GNU autoconf
+
+-	Enhanced the vfork() autoconf test to avoid a hang on VMS
+
+Libschily:
+
+-	libschily/spawn.c now uses vfork()
+
+-	libschily/fexec.c now supports IO redirection on VMS
+
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+-	Some #define inline definitions removed as &quot;inline&quot; is already
+	handled by schily/mconfig.h
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+-	Fixed a typo in idcache.c
+
+Libfile:
+
+-	Some changes for better VMS support
+
+Libhfs_iso:
+
+-	Removed a warning from the HP-UX C-compiler about a possible endless loop 
+
+Libsiconv:
+
+-	Add the VMS C-compiler to the list of exceptions for not fully C99 compliant
+	compilers to allow compilation. 
+
+Libscg:
+
+-	changed a include path in libscg/scsi-mac-iokit.c to allow
+	compilation on &quot;Snow Leopard&quot;
+
+Libscgcmd:
+
+Libmdigest:
+
+Rscsi:
+
+Cdrecord:
+
+-	Added a workaround for a firmware oddity with DVD+RW on
+	'_NEC    ' 'DVD_RW ND-3500AG' with media written from other drives.
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Added a forgotten modification in ringbuff.c that caused an abort due to
+	a wrong assert() condition.
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	Fixed a bug (writing to stdout instead of stderr) recently introduced with better 
+	RR recognition support.
+
+-	&quot;isoinfo&quot; now supports iconv() based locales for Joliet.
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000043.html">[Cdrecord-video] cdrtools-2.01.01a67 ready
+</A></li>
+	<LI>Next message: <A HREF="000045.html">[Cdrecord-video] cdrtools-2.01.01a69 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

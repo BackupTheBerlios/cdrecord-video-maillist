@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20%5BCdrecord-support%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C4656b94f.flQFqJ8mDetWP6bv%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000002.html">
+   <LINK REL="Next"  HREF="000004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20%5BCdrecord-support%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C4656b94f.flQFqJ8mDetWP6bv%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri May 25 12:24:15 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000002.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+        <LI>Next message: <A HREF="000004.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill Davidsen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">davidsen at tmr.com</A>&gt; wrote:
+
+&gt;<i> &gt; exceptions.TypeError: stat() argument 1 must be (encoded string without NULL 
+</I>&gt;<i> &gt; bytes), not str
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; meaning one directory has NULL in it somehow. Any idea how this happened? 
+</I>&gt;<i> &gt; Unpacking the tarball with tar and repackaging fixes the problem but 
+</I>&gt;<i> &gt; according to docs a filename should not contain NULL (POSIX wise).
+</I>&gt;<i> &gt;   
+</I>&gt;<i> star generates output which can not always be read with standard 
+</I>&gt;<i> distribution tar programs. One of the reasons we stopped using it, we 
+</I>&gt;<i> need to write files people can read without having to download a package 
+</I>&gt;<i> which was in star format the last time we looked. I think it requires 
+</I>&gt;<i> some obscure POSIX tar feature no one else uses.
+</I>&gt;<i>
+</I>&gt;<i> In other words it's technically &quot;standard&quot; but it's not useful for 
+</I>&gt;<i> distribution, only for backups.
+</I>
+Come on, do you need to spread this kind of FUD?
+
+star creates archives that can be extracted by any halfway bug-free tar 
+implementaion. Star is the best solution since 25 years.
+
+You are trying to make star responsible for problems from broken tar 
+implementations. Check the &quot;error message&quot; from the original mail and
+you see that this poor &quot;tar&quot; implementaion must have a heavy bug.
+Look at GNU tar - I need to _strongly_ recommend using GNU tar for 
+creating software distributions.
+
+-	GNU tar often has problems to unpack it's own archives.
+	People need to use star in these cases. If you read the GNU tar
+	mailing list, you know what I am talking of....
+
+-	Mysql uses GNU tar to create their distribution and publish
+	archives that are so extremely broken, that only some GNU tar
+	version can unpack them.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000002.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+	<LI>Next message: <A HREF="000004.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20%5BCdrecord-support%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C4658692d.Tds9qCbf2J7QJrdu%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20%5BCdrecord-support%5D%20cdrtools-2.01.01a27%20ready&In-Reply-To=%3C4658692d.Tds9qCbf2J7QJrdu%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat May 26 19:06:53 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+        <LI>Next message: <A HREF="000006.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill Davidsen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">davidsen at tmr.com</A>&gt; wrote:
+
+&gt;<i> &gt; If you do not use GNU tar frequent enough, or you may do too simple things.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> Download tar packaged software and unpack it. Very simple thing, but the 
+</I>&gt;<i> thing which the original poster couldn't do with an star archive.
+</I>
+You stil spread FUD:
+
+The original poster did use a buggy tar implementation.
+There was definitely no problem in star.
+
+
+&gt;<i> &gt; The repeated problems are:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 1)	GNU tar sometimes writes
+</I>&gt;<i> &gt; 	&quot;... skipping to next header&quot; because it incorrectly asumes
+</I>&gt;<i> &gt; 	that the archive has broken headers.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2)	Restoring incremental backups does not work. It seems that
+</I>&gt;<i> &gt; 	this has never ever tested in a systematic way as my tests
+</I>&gt;<i> &gt; 	for star did fail immediately.
+</I>&gt;<i> &gt;   
+</I>&gt;<i>
+</I>&gt;<i> I'm sorry that star failed, if that comes from adding changes on the end 
+</I>&gt;<i> of an archive (append) I can believe it hasn't been heavily tested, most 
+</I>&gt;<i> people put each incremental backup in a separate file to allow restoring 
+</I>&gt;<i> to any given level. Note: I'm not saying that's better, just that in my 
+</I>&gt;<i> experience people don't append incremental data to archives.
+</I>
+What kind of FUD should this be?
+
+star does not fail. star has been heavily tested with inremental backups 
+and restores.
+
+I was not speaking about appending data to an archive....
+
+GNU tar claims to support incremental backups since 1992, but a very simple
+incremental backup and restore test with GNU tar fails completely.
+If you do not understand why GNU tar fails, try reading the GNU tar mailing 
+list. The problem is that the GNU tar archive format does not archive a 
+sufficient amount of meta data..... GNU tar fails completely in case that a
+directory is renamed and a new directory of the same name is created between
+two incrementals.
+
+
+&gt;<i> &gt; 3)	~ 5% of the multi-volume continuation archives are not accepted
+</I>&gt;<i> &gt; 	as valid continuation.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> &gt; With the latest GNU tar version you are able to create standard compliant
+</I>&gt;<i> &gt; archives but this is still not done by default.
+</I>&gt;<i> For portability that's probably a good decision, since GNU tar &quot;old 
+</I>&gt;<i> format&quot; seems to unpack with GNU tar, star, Solaris tar, and even the 
+</I>&gt;<i> old Sys-III, SysV, and SysVR4 tar implementations.
+</I>
+This is definitely wrong!
+
+I cannot understand why you repeat this lie... I did explain more than
+once where the problem is. GNU tar uses a nonstandard method to archive
+long pathnames. This makes tar, Solaris tar, old Sys-III, SysV, and SysVR4 tar 
+implementations fail to unpack such GNU tar archives.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+	<LI>Next message: <A HREF="000006.html">[Cdrecord-video] [Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

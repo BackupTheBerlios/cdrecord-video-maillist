@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a73 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b5c810e.k0mT%2Bm7UFb%2By2A3R%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000049.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a73 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b5c810e.k0mT%2Bm7UFb%2By2A3R%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a73 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Jan 24 18:19:10 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000049.html">[Cdrecord-video] [Cdrecord-support] DVD-RAM
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Please test and report!
+
+cdda2wav added a lot of new features.
+
+The old features are not affected but still the new features need testing.
+Please note that there is not yet support in cdrecord for *.inf files
+that are related to a hidden track and called xxx_00.inf. Cdrecord will
+thus write an additional track and shift all track numbers in case of
+a CD with hidden audio track. The next cdrecord release will include support
+for writing hidden tracks in a way that is identical to the original disk.
+
+
+NEW features of cdrtools-2.01.01a73:
+
+*******
+NOTE: cdrtools is currently in a state of a release candidate for the next
+major release.	
+
+*******
+
+******* All man pages have been rewritten for the upcomming final release ******
+******* Please read the man pages and report hints and proposals          ******
+
+
+All:
+
+Libschily:
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+Libscg:
+
+Libscgcmd:
+
+Libmdigest:
+
+Rscsi:
+
+Cdrecord:
+
+-	The *.inf file parser now supports a new tag &quot;Track=&quot; that
+	is intended to carry the absolute track number from the original disk.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Cdda2wav now permits to use &quot;max&quot; for the endtrack number. This
+	allows to specify e.g. -t2+max for a list of tracks from track #2
+	to the last audio track on the disk.
+
+-	New option -cuefile allows to tell cdda2wav to create a CDRWIN CUE
+	file. This currently only works together with wither -tall, or with
+	-t0+max or -t1+max.
+
+	Note that due to a misconception in the CDRWIN CUE file definition,
+	it is impossible to create 100% correct CD-audio copy by 100%
+	following the CDRWIN CUE file definition and having separate audio
+	files for each track at the same time. For this reason, it is currently
+	impossible to create CDRWIN CUE files while using cdda2wav -B.
+
+-	Cdda2wav now only writes a binary *.cdtext file in case that this
+	file would contain more data than a header that tells that there
+	is no further content.
+
+-	Cdda2wav no longer removes the Index0 entry from a longer Index list
+	if Index0 is -1.
+
+-	Cdda2wav now automatically scans for hidden audio tracks. This is a
+	complex task as there are drives that do not allow to read the
+	hidden data before track 1.
+
+-	New option -no-hidden-track allows to prevent cdda2wav from scanning
+	for a hidden audio track.
+
+-	Cdda2wav now writes the new tag &quot;Track=&quot; into the *.inf files that
+	is intended to carry the absolute track number from the original disk.
+
+-	A shortcut for paraopts=sectors-per-track-1,retries=200 was introduced.
+	The name of the shortcut is &quot;proof&quot;, so just use &quot;paraopts=proof&quot; for
+	selecting the most stringent paranoia mode.
+
+-	Cdda2wav now automatically selects paranoia mode in case that the
+	paraopts= option was used.
+
+-	Cdda2wav now again works in suid root mode on Solaris 11. It seems that
+	the development versions from Solaris 11 did change the behavior with
+	fine grained privileges in a way that was incompatible with the way
+	cdda2wav did try to handle both suid root and fine grained privileges.
+
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	The man page for mkisofs was enhanced in order to better mention
+	that mkisofs always writes ISO-9660 and that other file systems are
+	thus always added as a hybrid file system.
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000049.html">[Cdrecord-video] [Cdrecord-support] DVD-RAM
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

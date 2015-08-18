@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a56 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a56%20ready&In-Reply-To=%3C49785949.dELZGZEc3x3lUfrz%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a56 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a56%20ready&In-Reply-To=%3C49785949.dELZGZEc3x3lUfrz%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a56 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jan 22 12:32:25 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000028.html">[Cdrecord-video] cdrtools-2.01.01a57 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+NEW features of cdrtools-2.01.01a56:
+
+*******
+NOTE: cdrtools is currently in a state just before a new major release.
+	
+
+*******
+
+
+All:
+
+-	New autoconf test to distinguish between the free of charge 
+	&quot;Bundled&quot; cc on HP-UX and the commercial cc. Only the commercial cc 
+	supports ANSI C and the Bundled cc complains when the ANSI Options
+	are used:
+
+	(Bundled) cc: warning 480: The -A option is available only with the C/ANSI C product; ignored.
+	(Bundled) cc: warning 480: The -O option is available only with the C/ANSI C product; ignored.
+
+	These warnings are no longer present.
+
+-	schily/schily.h now auto-includes stdio.h in case that the platform 
+	supports the new POSIX.1-2008 getline()/fgetline() functions that 
+	violate against general POSIX rules and thus overlay our implementation
+	that exists since 1982.
+
+-	schily/stkframe.h now uses Intptr_t for the fr_savp member to make it
+	work correctly on 64bit systems without OS supplied stkframe.h.
+
+-	New autoconf test on whether unistd.h defines extern char ** environ.
+
+-	New file schily/stdio.h to simplify layering.
+
+Libschily:
+
+-	Fixed a bug in fexecl() introduced in October 2008 that caused the
+	called program to be called with a too small argc (one too few).
+
+-	format() now supports %z for size_t and %t for ptrdiff_t
+
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Avoid some GCC warnings
+
+Libcdrdeflt:
+
+Libdeflt:
+
+-	lbdeflt needs to be compiled before libcdrdeflt when creating
+	dynamic libs
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+Libscg:
+
+-	Avoid some GCC warnings
+
+Libscgcmd:
+
+Rscsi:
+
+Cdrecord:
+
+-	Avoid some GCC warnings
+
+-	Some small typos in error messages have been fixed.
+
+-	Workaround for 'TSSTcorp' 'CDDVDW SE-S224Q ' 'TS01' firmware bug.
+	The drives does not return SES_UNDEF for unformatted DVD+RW media.
+
+-	Support again cdrecord -v -sao -multi *.wav
+	This stopped working with 2.01.01a29 when introducing DVD multi-border
+	support.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	struct tocdesc has been restructured to prevent struct tail padding on MC-680x0 systems.
+	Thanks to Yvan Doyeux for reporting this for the ATARI port.
+
+-	The drive 'HP ' 'CD-Writer+ 9600 ' '1.0a' does not like to read SCSI FULL TOC
+	with a too long transfer lenght. First retrieve the available data count.
+
+-	New options -debug -debug-scsi -kdebug -kdebug-scsi -kd to set SCSI low level
+	debugging in libscg
+
+-	The option -v not also supports &quot;!&quot; and &quot;not&quot; to invert the list
+	of &quot;verbose&quot; options (e.g. -v!indices for everything but indices).
+
+-	Avoid some GCC warnings specific to HP-UX
+
+-	Added a workaround for gmake &lt; version 3.81.
+	Older gmake versions evaluate dependencies in the wrong order.
+
+Readcd:
+
+-	Try to exit(excode) instead of exit(0)  in case that siginificant
+	problems occured.
+
+-	Prevent readcd from dumping core via raisecond(&quot;file_write_err&quot;)-&gt;abort()
+	in case that the target filesystem fills up.
+
+-	Added a workaround for gmake &lt; version 3.81.
+	Older gmake versions evaluate dependencies in the wrong order.
+
+Scgcheck:
+
+-	Avoid some GCC warnings
+
+-	Added a workaround for gmake &lt; version 3.81.
+	Older gmake versions evaluate dependencies in the wrong order.
+
+Scgskeleton:
+
+-	Added a workaround for gmake &lt; version 3.81.
+	Older gmake versions evaluate dependencies in the wrong order.
+
+Btcflash:
+
+-	Added a workaround for gmake &lt; version 3.81.
+	Older gmake versions evaluate dependencies in the wrong order.
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	Some casts have been added to increase the 64 bit compilation support
+
+-	mkisofs and the tools isodump, isovfy and isoinfo now completely
+	support the SUSP termination signature &quot;ST&quot;.
+
+-	Do no longer flag the absence of a &quot;RR&quot; signature as an error in
+	isodump, isovfy and isoinfo as newer Rock Ridge standard versions removed RR.
+
+-	Fixed a minor problem with a debug print output and 64 bit compile mode.
+
+-	Avoid some GCC warnings
+
+-	Minor typo fix in the mkisofs man page
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+
+CYGWIN NT-4.0 NOTES:
+
+To compile on Cygwin32, get Cygwin and install it.
+For more information read README.win32
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+NOTE:	These tar archives are 100% POSIX compatible. GNU tar may get some
+	minor trouble. If you like a 100% POSIX compliant tar, get star from
+	<A HREF="ftp://ftp.berlios.de/pub/star/">ftp://ftp.berlios.de/pub/star/</A>
+
+WARNING: Do not use 'winzip' to extract the tar file!
+	Winzip cannot extract symbolic links correctly.
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000028.html">[Cdrecord-video] cdrtools-2.01.01a57 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

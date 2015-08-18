@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-3.0release-candidate1 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-3.0release-candidate1%20ready&In-Reply-To=%3C4bf24907.0ZdmkA8XokoOyS5X%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-3.0release-candidate1 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-3.0release-candidate1%20ready&In-Reply-To=%3C4bf24907.0ZdmkA8XokoOyS5X%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-3.0release-candidate1 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue May 18 10:00:07 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000056.html">[Cdrecord-video] Cdrtools Projekt publishes Release Candidate for	cdrtools-3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	It still calls itself cdrtools-2.01.01a79, but it is the release 
+	candidate.
+
+
+NEW features of cdrtools-2.01.01a79:
+
+*******
+NOTE: cdrtools is currently in a state of the last release candidate for the
+next major release which will be cdrtools-3.0-final in a about a week.
+
+*******
+
+******* All man pages have been rewritten for the upcomming final release ******
+******* Please read the man pages and report hints and proposals          ******
+
+
+All:
+
+-	Trying to add support for 32 bit compilation on newer Mac OS X
+	version via smake CCOM=cc32
+	This only works if 32 Bit development support is installed on Mac OS X.
+
+-	Trying to add support for 32 bit compilation on newer Linux
+	version via smake CCOM=cc32
+	This only works if 32 Bit development support is installed on Linux.
+
+-	include/schily/wchar.h now includes support for the mbr*() multi-byte
+	character handling routines.
+
+-	include/schily/regex.h added
+
+-	include/schily/libgen.h added
+
+-	New autoconf tests for basename() dirname() strndup() wcsndup()
+	mbsinit() mbrtowc() wcrtomb()
+
+-	New autoconf tests for wctype_t mbstate_t
+
+-	A new make macro STRIPFLAGS allows to install stripped binaries by calling
+	smake STRIPFLAGS=-s install
+
+-	Conf-files in /etc/default are now installed 0644 by default
+
+-	Man pages are now by default installed in $(INS_BASE)/share/man
+	The base directory &quot;share&quot; may be changed by caling 
+
+		smake DEFMANBASE=something
+
+-	README.compile now mentions:
+
+	INS_RBASE=		Set different &quot;root&quot; install path
+	DEFMANBASE=		Set different man base directory
+	STRIPFLAGS=-s		Strip all binaries with &quot;make install&quot;
+	RUNPATH=		Overwrite ELF RUNPATH
+	DEFUMASK=		Set different default permissions for
+				creating directories
+	DEFINSUMASK=		Set different default permissions for
+				creating directories in the install path
+
+Libschily:
+
+-	fnmatch.c now supports multi byte characters.
+
+-	New files basename.c and dirname.c
+
+-	New files strndup.c and wcsndup.c
+
+-	A new algorithm in 
+	strncat.c strncmp.c strncpy.c strnlen.c wcsncat.c wcsncmp.c wcsncpy.c wcsnlen.c
+	makes the code faster and smaller.
+
+
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+-	libsiconv now supports sic_close()
+
+Libscg:
+
+Libscgcmd:
+
+Libmdigest:
+
+Rscsi:
+
+-	Makefile.dfl now detects whether /etc/default/rscsi already exists
+
+Cdrecord:
+
+-	Cdrecord now auto-formats unformatted (maiden) BD-RE media.
+	Unformatted BD-RE media is rare but it exists. This function
+	completes the BluRay support in cdrecord.
+
+-	Cdrecord now prints progress messages when formatting DVD+RW media
+	and called with -v.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	Makefile.dfl now detects whether /etc/default/cdrecord already exists
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+-	A man page was created for scgskeleton.
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000056.html">[Cdrecord-video] Cdrtools Projekt publishes Release Candidate for	cdrtools-3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

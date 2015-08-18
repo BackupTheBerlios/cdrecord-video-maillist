@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] Cdrtools-2.01.01a72 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-2.01.01a72%20ready&In-Reply-To=%3C4b4b0fec.frcpseLufiSsvo1p%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] Cdrtools-2.01.01a72 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-2.01.01a72%20ready&In-Reply-To=%3C4b4b0fec.frcpseLufiSsvo1p%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] Cdrtools-2.01.01a72 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Jan 11 12:47:56 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000047.html">[Cdrecord-video] cdrtools-2.01.01a71 ready
+</A></li>
+        <LI>Next message: <A HREF="000049.html">[Cdrecord-video] [Cdrecord-support] DVD-RAM
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>NEW features of cdrtools-2.01.01a72:
+
+*******
+NOTE: cdrtools is currently in a state of a release candidate for the next
+major release.	
+
+*******
+
+******* All man pages have been rewritten for the upcomming final release ******
+******* Please read the man pages and report hints and proposals          ******
+
+
+All:
+
+Libschily:
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+Libscg:
+
+Libscgcmd:
+
+Libmdigest:
+
+Rscsi:
+
+Cdrecord:
+
+-	The CDRWIN cue sheet parser has been enhanced to give better error messages:
+
+	-	There are now hints on what is missing in the CUE file
+
+	-	The error message now also contains the column where the problem was detected
+
+-	Allow cdrecord to compile again on a pre-C99 compiler (there was a variable delaration
+	past a statement in a function.
+
+-	A description for the *.inf file fomat was added to the cdrecord man page
+
+-	New (previously missing) CD-Text tags have been added to auinfo.c (*.inf file parser):
+
+	Albumsongwriter=
+	Albumcomposer=
+	Albumarranger=
+	Albummessage=
+	Albumclosed_info=
+
+	Note that these tags do not appear in the CDDB database.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	New arg &quot;all&quot; to -t option.
+
+	cdda2wav -B	extracts all audio tacks into separate files
+	cdda2wav -tall	extracts all audio tacks into a single files
+
+-	cdda2wav now by default writes a file &quot;xxx.cdtext&quot; with raw binary
+	CD-Text data in case cdda2wav was told to retrieve CD-Text.
+
+-	A new option -no-textfile allows to disable the creation of the file &quot;audio.cdtext&quot;
+	This version of cdda2wav creates a file &quot;audio.cdtext&quot; or similar (depending on
+	the set up file name base) in case that there is CD-Text on the medium and that
+	the drives supports to read the CD-Text data with MMC SCSI commands.
+
+-	Fixed a bug in cdda2wav that caused cdda2wav to set up the file name base too late.
+	This resultes in the files &quot;audio.cdindex&quot; and &quot;audio.cddb&quot; alwas to have this name
+	while the *.inf files use the name base from the cdda2wav arguments. Now all
+	files created by cdda2wav honor the file name base.
+
+-	Cdda2wav by default fills empty track specific CD-Text data with the Disk global
+	value (if present). A new option -no-textdefaults allows to disable this fallback
+	and leaves the related fields empty if they are empty on the mester CD.
+
+-	Fixed a problem with cdda2wav -interactive (used by GNOME GSTREAMER CD-DAE plugin)
+	that could cause cdda2wav to dump core in case that there is a data
+	session past the last audio track.
+
+-	New (previously missing) CD-Text tags have been added to the *.inf files:
+
+	Albumsongwriter=
+	Songwriter=
+	Albumcomposer=
+	Composer=
+	Albumarranger=
+	Arranger=
+	Albummessage=
+	Message=
+	Albumclosed_info=
+	Closed_info=
+
+	Note that these tags do not appear in the CDDB database.
+
+
+Readcd:
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	Fixed a bug with file descriptor handling in mkisofs/apple.c
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000047.html">[Cdrecord-video] cdrtools-2.01.01a71 ready
+</A></li>
+	<LI>Next message: <A HREF="000049.html">[Cdrecord-video] [Cdrecord-support] DVD-RAM
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

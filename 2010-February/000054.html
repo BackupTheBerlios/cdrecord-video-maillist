@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] cdrtools-2.01.01a76 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a76%20ready&In-Reply-To=%3C4b7b1102.OzYr8FCeJXu70/wN%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000053.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] cdrtools-2.01.01a76 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20cdrtools-2.01.01a76%20ready&In-Reply-To=%3C4b7b1102.OzYr8FCeJXu70/wN%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] cdrtools-2.01.01a76 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Feb 16 22:41:22 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000053.html">[Cdrecord-video] cdrtools-2.01.01a75 ready
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+NEW features of cdrtools-2.01.01a76:
+
+*******
+NOTE: cdrtools is currently in a state of a release candidate for the next
+major release.	
+
+*******
+
+******* All man pages have been rewritten for the upcomming final release ******
+******* Please read the man pages and report hints and proposals          ******
+
+
+All:
+
+Libschily:
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libcdrdeflt:
+
+Libdeflt:
+
+Libfind:
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+Libscg:
+
+Libscgcmd:
+
+Libmdigest:
+
+Rscsi:
+
+Cdrecord:
+
+-	Added a workaround for a firmware bug in the drive:
+	'HL-DT-ST' 'BD-RE  BH10LS30 ' '1.00'
+	That causes the drive to return zero media size for BluRay media.
+
+-	cdrecord now aborts if the cuefile= option was specified with a non-CD
+	media in the drive.
+
+-	CDRWIN CUE files now may refer to several data files where each data file
+	contains less than the whole disk but more than a single track.
+
+-	The CUE parser now correctly sets the sector size information for the
+	lead-in area.
+
+-	The CUE parser now by default only accepts CDRWIN CUE compliant files
+	but may be switched into an enhanced mode by introducing a special comment
+	&quot;REM CDRTOOLS&quot;
+
+-	The CUE parser now supports a FILE command between INDEX 00 and INDEX 01.
+	This is needed in order to write CUE sheets from Exact Audio Copy.
+	Note that cdrecord needs to be switched into the enhanced CUE parser mode
+	by either specifying &quot;REM CDRTOOLS&quot; or by specifying:
+	REM COMMENT &quot;ExactAudioCopy v0.99pb5&quot;
+
+	Also note that cdrecord currently does not support more than one FILE
+	command per TRACK. For this reason, hidden audio tracks only work if
+	the hidden audio data is in the same file that also contains data for
+	track 1.
+
+-	New commands &quot;ARRANGER&quot;, &quot;COMPOSER&quot; and &quot;MESSAGE&quot; for adding CD-Text information
+	in CUE files. Note that these commands are cdrecord specific extensions that
+	re unknown by CDRWIN and thus need &quot;REM CDRTOOLS&quot; to be enabled.
+
+-	The CUE file format is now documented in the cdrecord man page.
+
+-	Fixed a small type bug in cdrecord/fifo.c (introduced a few
+	versions before) that hits if the OS does not support the FIFO.
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+-	New cdda2wav option -vaudio-tracks
+
+-	Make cdda2wav -q silent again (even with CDs with hidden track) to
+	make it compatible again with scripts.
+
+-	cdda2ogg and cdda2ogg.1 added to standard install
+	The script cdda2ogg was enhanced to work seamlessly.
+
+-	cdda2mp3 and cdda2mp3.1 added to standard install
+	The script cdda2mp3 was enhanced to work seamlessly.
+
+-	the scripts cdda2ogg and cdda2mp3 now allow to forward options to
+	cdda2wav.
+
+	In order to enable &quot;paranoia mode&quot;, call:
+
+	cdda2ogg -paranoia
+
+	In order to enable the most proof &quot;paranoia mode&quot;, call:
+
+	cdda2ogg -paraopts=proof
+
+-	The cdda2ogg man page was completely reworked
+
+-	The SYSvr4 pkg definition now includes cdda2ogg and cdda2mp3
+
+-	Added a workaround for a broken ASPI that hangs with
+	odd transfer counts.
+
+
+Readcd:
+
+-	Added a workaround for a broken ASPI that hangs with
+	odd transfer counts.
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000053.html">[Cdrecord-video] cdrtools-2.01.01a75 ready
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-video] Cdrtools-2.01.01a37 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-video/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-2.01.01a37%20ready&In-Reply-To=%3C477cff49.nKkNLdW%2BLOWHVdIX%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-video] Cdrtools-2.01.01a37 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-video%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-video%5D%20Cdrtools-2.01.01a37%20ready&In-Reply-To=%3C477cff49.nKkNLdW%2BLOWHVdIX%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-video] Cdrtools-2.01.01a37 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jan  3 16:29:13 CET 2008</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>NEW features of cdrtools-2.01.01a37:
+
+All:
+
+-	New autoconf test HAVE_SYS_SIGLIST_DEF checks for sys_siglist[]
+	definition in signal.h Thanks to Tatjana Heuser for reporting
+
+-	Possibly double #defines HAVE_ICONV HAVE_ICONV_OPEN HAVE_ICONV_CLOSE
+	in include/schily/iconv.h fixed. Thanks to Tatjana Heuser for reporting
+
+
+Libschily:
+
+Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">xiphmont at mit.edu</A>):
+
+Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Libfind:
+
+-	-size now understands things like -size +10m
+
+-	the function getperm() has been moved to libschily
+
+-	find_main() now supports to propagate a different environment
+	(e.g. with a different PATH) to fexec())
+
+Libfile:
+
+Libhfs_iso:
+
+Libsiconv:
+
+-	Changed sic_nls.c to allow compilation on SCO OpenServer-5.x and
+	other compilers that set __STDC__ to 0 and are not at least
+	fully C89 compliant.
+
+Libscg:
+
+-	scg/scgcmd.h upgraded to be sharable with the &quot;scg&quot; Solaris kernel driver
+
+-	scg/scgio.h upgraded to be sharable with the &quot;scg&quot; Solaris kernel driver
+
+Rscsi:
+
+Cdrecord:
+
+-	Cdrecord now correctly recognizes unformatted BD-RE media.
+	NOTE: The BD support code is not yet completely ready but
+	I expect this to happen in a few days.
+
+
+-	cdrecord man page now mentiones the &quot;lofi&quot; driver for Solaris
+
+-	Cdrecord now re-checks the media after a &quot;blank&quot; or &quot;format&quot;
+	operation has been issued. This prevents problems with incorrect
+	media size assumptions.
+
+-	cdrecord now implements a simulated &quot;blank&quot; feature for media that
+	itself does not support blanking: currently DVD-RAM + DVD+RW
+
+
+
+
+Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">heiko at hexco.de</A>):
+
+Readcd:
+
+-	Man page now mentions -edc-corr
+
+Scgcheck:
+
+Scgskeleton:
+
+Btcflash:
+
+Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+
+-	isoinfo now allows to check the contents of the Joliet Volume descriptor
+	by calling:
+		isoinfo -dJ
+
+-	mkisofs bug fix for multi extent files, make UDF part from multi extent
+	files working again. Thanks to a hint from
+	Pav Lucistnik &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">pav at oook.cz</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">pav at FreeBSD.org</A>&gt;
+
+
+
+	HELIOS TODO:
+
+	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+		for Rock Ridge (in case of a UTF-8 based target locale) using
+		UTF-8 based translations.
+
+	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+
+TODO:
+	-	Support correct inode numbers for UDF hardlinks
+
+	-	Support sockets, pipes, char/blk-dev specials with UDF
+
+	-	read Joliet filenames with multi-session if no TRANS.TBL
+		or RR is present. I am looking for a volunteer for this task!
+
+		Note that this can never be 100% correct as there is no relation
+		between the names on the master (UNIX) filesystem, the ISO-9660
+		names and the Joliet names. Only the Rock Ridge names are
+		untranslated with respect to the original files on the
+		master (UNIX) filesystem.
+
+	-	add libecc/edc for CDI and similar.
+
+
+The files are located on:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+
+NOTE:	These tar archives are 100% POSIX compatible. GNU tar may get some
+	minor trouble. If you like a 100% POSIX compliant tar, get star from
+	<A HREF="ftp://ftp.berlios.de/pub/star/">ftp://ftp.berlios.de/pub/star/</A>
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-video">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-video">More information about the Cdrecord-video
+mailing list</a><br>
+</body></html>
